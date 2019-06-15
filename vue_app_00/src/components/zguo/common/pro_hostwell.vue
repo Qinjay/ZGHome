@@ -2,32 +2,33 @@
     <div class="hostwell">
        <p class="myfont1">美宿精选</p>
        <div class="hostwellC">
-           <ul class="u1">
-               <li v-for="(item,i) of imgList" :key="i">
+           <div class="u1">
+               <a v-for="(item,i) of rows" :key="i" :href=item.href>
                    <div class="uImg">
-                       <img :src=item alt="">
+                       <img :src=item.pic alt="">
                        <div class="coll"><img src="collection.png" alt=""></div>
                     </div>
                    <div>
-                       <p class="myfont4">整套·2居室 | 可住3-4人</p>
-                       <p class="myfont3">近光谷地铁站两室一厅蒲公英系列</p>
-                       <p> <span class="p-price">￥298</span><span class="myfont4">/晚</span></p>
+                       <p class="myfont4">{{item.rent_way}}</p>
+                       <p class="myfont3">{{item.title.slice(0,21)}}...</p>
+                       <p> <span class="p-price">￥{{item.rent_price}}</span><span class="myfont4">/晚　</span><del class="prise-d" v-show=item.isdiscounts>￥{{item.original_cost}}</del></p>
                    </div>
-               </li>
-           </ul>
-           <ul class="u2">
-               <li v-for="(item,i) of imgList" :key="i">
+               </a>
+           </div>
+          <div class="u2">
+               <a v-for="(item,i) of rows" :key="i"  :href=item.href>
                    <div class="uImg">
-                       <img :src=item alt="">
+                      
+                       <img :src=item.pic alt="">
                        <div class="coll"><img src="collection.png" alt=""></div>
                     </div>
                    <div class="uC">
-                       <p class="myfont4">整套·2居室 | 可住3-4人</p>
-                       <p class="myfont3">近光谷地铁站两室一厅蒲公英系列</p>
-                       <p> <span class="p-price">￥298</span><span class="myfont4">/晚</span></p>
+                       <p class="myfont4">{{item.rent_way}}</p>
+                       <p class="myfont3">{{item.title.slice(0,21)}}...</p>
+                       <p><span class="p-price">￥{{item.rent_price}}</span><span class="myfont4">/晚　</span><del class="prise-d" v-show=item.isdiscounts>￥{{item.original_cost}}</del></p>
                    </div>
-               </li>
-           </ul>
+               </a>
+           </div>
        </div>
         <mt-button size="large" class="">查看更多民宿</mt-button>
     </div>
@@ -35,8 +36,21 @@
 <script>
 export default {
     data(){return{
-        imgList:["ban1.jpg","ban2.jpg","ban3.jpg","ban4.jpg","ban5.jpg",]
-    }}
+        imgList:["ban1.jpg","ban2.jpg","ban3.jpg","ban4.jpg","ban5.jpg",],
+        rows:[],
+        id:1,
+        }
+    },
+    created(){this.loadMore();},
+    methods:{
+        loadMore(){
+            this.axios.get("index/hostwell").then(result=>{
+               // console.log(result.data)
+                this.rows=result.data;
+                //console.log(result.data[1].isdiscounts)
+            })
+        },
+    }
 }
 </script>
 
@@ -49,6 +63,8 @@ export default {
 .myfont3{
     font-size:1rem;
     color:#000;
+    /* text-overflow: ellipsis;
+    -WebKit-line-clamp:2; */
 }
 .myfont4{
     font-size:0.9rem;
@@ -59,11 +75,17 @@ export default {
     font-size:1rem;
     font-weight: bolder;
 }
+.prise-d{
+    color:#B0B0B0;
+    font-size:0.3rem;
+    /* display: none; */
+}
 .u1,.u2{width:49%;float: left;}
+.u1>a,.u2>a{display:block;}
 .u1{padding-right:0.5rem}
 /* .u1{padding-right:0.2rem;} */
-.u1>li:first-child .uImg{
-    height:125px;
+.u1>a:first-child .uImg{
+    height:135px;
     }
 .uImg{
     height:107px;

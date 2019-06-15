@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <title></title>
+        <!-- <pro-title></pro-title> -->
         <prof0></prof0>
         <prof1></prof1>
         <pro-lunbo></pro-lunbo> 
@@ -16,6 +16,7 @@
     </div>
 </template>
 <script>
+// import proTitle from "./pro_title.vue";
 import prof0 from "./prof0.vue";
 import prof1 from "./prof1.vue";
 import proLunbo from "./pro_lunbo.vue";
@@ -26,7 +27,7 @@ import proHomelist from "./pro_homelist.vue";
 import proHomestyle from "./pro_homestyle.vue";
 import proHosthouse from "./pro_hosthouse.vue";
 import promis from "./promis.vue"
- import proHostwell from "./pro_hostwell.vue";
+import proHostwell from "./pro_hostwell.vue";
 export default {
     data(){
         return{

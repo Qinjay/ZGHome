@@ -6,20 +6,22 @@
         </div>
         <mt-swipe class="branHomeF" :auto="2000" :show-indicators="false">
             <mt-swipe-item class="brand-c"  v-for="(item,i) of imgList" :key="i">
-                <div class="brandC-img">
-                    <img :src=item alt="">
-                </div>
-                <div class="brandC-button">
-                    <div class="brandC-b-left">
-                        <p>醉爱文艺美宿</p>   <!--title-->
-                        <p>老洋房</p><!--title-->
-                        <p>醉爱</p><!--style-->
-                        <p><span>￥259</span><span>/晚</span> </p><!--title-->
+                <a href="javascript:;">
+                    <div class="brandC-img">
+                        <img :src=item alt="">
                     </div>
-                    <div class="brandC-logo">
-                        <img src="hostlogojpg.jpg" alt="">
+                    <div class="brandC-button">
+                        <div class="brandC-b-left">
+                            <p>醉爱文艺美宿</p>   <!--title-->
+                            <p>老洋房</p><!--title-->
+                            <p>醉爱</p><!--style-->
+                            <p><span>￥259</span><span>/晚</span> </p><!--title-->
+                        </div>
+                        <div class="brandC-logo">
+                            <img src="hostlogojpg.jpg" alt="">
+                        </div>
                     </div>
-                </div>
+                </a>
             </mt-swipe-item>
         </mt-swipe>
     </div>
@@ -41,10 +43,6 @@ export default {
         border-radius:7px; 
          box-shadow:0 0 5px 1px #B0B0B0;
     }
-    /* .brand-c{
-        width:101%;
-        padding-right:0.3rem;  
-    }   */
     .brand-top{
         display:flex;
         justify-content:space-between;
@@ -58,11 +56,6 @@ export default {
         font-size:0.8rem;
         color:#8f8f94;
     }
-    /*.brand-c{
-         border-radius:7px; 
-         box-shadow:0 0 5px 1px #B0B0B0; 
-        overflow: hidden;
-    }    */
     .brandC-img{
         width:100%;height:227px;
     }
@@ -99,5 +92,5 @@ export default {
         font-weight: bolder;
         color:#000;
     }  
-    
+    .brand-c>a{display:black;}
 </style>

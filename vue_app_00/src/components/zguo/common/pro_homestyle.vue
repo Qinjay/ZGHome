@@ -3,14 +3,16 @@
         <p class="myfont1">主题精选</p>
         <ul id="sul">
             <li class="homestyleC" v-for="(item,i) in imgList" :key="i" @touchmove="touchmove" @touchstart="touchstart" @touchend="touchend">
-                <div class="homestyleImg">
-                    <img :src=item alt="">
-                </div>
-                <div>
-                    <p class="myfont3">北欧简约</p>
-                    <p class="myfont2">看腻了清晰民宿，了解下北欧风吧</p>
-                    <p class="myfont4">169元起</p> 
-                </div>
+                <a href="javascript:;">
+                    <div class="homestyleImg">
+                        <img :src=item alt="">
+                    </div>
+                    <div>
+                        <p class="myfont3">北欧简约</p>
+                        <p class="myfont2">看腻了清晰民宿，了解下北欧风吧</p>
+                        <p class="myfont4">169元起</p> 
+                    </div>
+                </a>
             </li>
         </ul>
     </div>
@@ -92,7 +94,7 @@ export default {
     float: left;
    
 }
-
+.homestyleC>a{display:block;}
 .homestyleImg>img{width:100%;height:100%;border-radius:5px;}
 .homestyleImg{
     position: relative;

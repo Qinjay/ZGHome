@@ -3,21 +3,21 @@
         <p class="myfont1">热门入住地</p>
         <div>
             <ul id="hostul" >
-                <li v-for="(elem,i) of hostList" :key="i" @touchmove="touchmove" @touchstart="touchstart" @touchend="touchend" @click="bgcolchange">
+                <li v-for="(elem,i) of hostList" :key="i" :class="{'bgcolor':flag==i}" @touchmove="touchmove" @touchstart="touchstart" @touchend="touchend" @click="bgcolchange(i)">
                     <p class="myfont3">{{elem.where}}</p> 
                     <p class="myfont4">{{elem.n}}选择</p>
                 </li>
             </ul>
         </div>
         <div class="hosthouseCon">
-            <div v-for="(item,i) of imgList" :key="i">
+            <a v-for="(item,i) of imgList" :key="i" href="javascript:;">
                 <div class="hostImg"><img :src=item alt=""></div>
                 <div>
                     <p class="myfont4">整套·2居室 | 可住3-4人</p>
                     <p class="myfont3">近光谷地铁站两室一厅蒲公英系列</p>
                     <p> <span class="p-price">￥298</span><span class="myfont4">/晚</span></p>
                 </div>
-            </div>
+            </a>
         </div>
         <mt-button size="large">查看更多武汉民宿</mt-button>
     </div>
@@ -37,11 +37,11 @@ export default {
             {where:"光谷科技中心",n:"22%"},
             {where:"武昌",n:"13%"},
             ],
+       flag:0
     }},
     methods:{
-        bgcolchange(e){    //？？？？？？？
-            console.log(this)
-            this.className="bgcolor";
+        bgcolchange(i){ 
+            this.flag=i;
         },
         touchstart(e){ //按下
             this.x1=e.touches[0].pageX;
@@ -99,6 +99,7 @@ export default {
     width:120px;
     float: left;
     border:1px solid #ebebeb;
+    border-radius: 5px;
     padding: 0.5rem;
     margin:0.5rem;
     /* flex-wrap: nowrap; */
@@ -106,7 +107,7 @@ export default {
 #hostul>li>p{
     line-height:1rem;margin:0
 }
-.hosthouseCon>div{
+.hosthouseCon>a{
     float: left;
      width:47%;
      margin:0.3rem;
@@ -119,8 +120,9 @@ export default {
 } 
 .hostImg>img{width:100%;height: 100%;border-radius:3px;}
 .bgcolor{
-    background-image : linear-gradient(45deg, #1F1F1F 100%, #545454 0%);
+    background-image : linear-gradient(45deg, rgba(31,31,31,0.8) 100%, rgba(84,84,84,0.8) 0%);
     }
+.bgcolor>p{color:#fff;}
 .hosthouse .mint-button--default{
         background-color:#E6E6E6;
         font-size:1rem;

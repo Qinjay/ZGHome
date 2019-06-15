@@ -3,15 +3,17 @@
         <p class="myfont1">民宿清单</p>
         <ul id="mul">
             <li class="homelistC" v-for="(item,i) in imgList" :key="i" @touchmove="touchmove" @touchstart="touchstart" @touchend="touchend">
-                <div class="homelistImg">
-                    <img :src=item alt="">
-                <p class="listposi">旅游热门</p>
-                </div>
-                <div>
-                    <p class="myfont2">武汉</p>
-                    <p class="myfont3">坐落窗口 <br>静望长江日出日落</p>
-                    <p class="myfont4">满足你对江城-武汉的所有...</p> <!--数据库截取12个字 然后用。。。省略-->
-                </div>
+                <a href="javascript:;">
+                    <div class="homelistImg">
+                        <img :src=item alt="">
+                    <p class="listposi">旅游热门</p>
+                    </div>
+                    <div>
+                        <p class="myfont2">武汉</p>
+                        <p class="myfont3">坐落窗口 <br>静望长江日出日落</p>
+                        <p class="myfont4">满足你对江城-武汉的所有...</p> <!--数据库截取12个字 然后用。。。省略-->
+                    </div>
+                </a>
             </li>
         </ul>
     </div>
@@ -110,5 +112,6 @@ export default {
     bottom:-8px;
     left:2%;
 }
+.homelistC>a{display:block;}
 </style>
 
